@@ -15,11 +15,11 @@
 
 KAPDelay::KAPDelay()
 :   mSampleRate(-1),
-    mFeedbackSample(0.0),
+//    mFeedbackSample(0.0),
     mTimeSmoothed(0.0),
     mDelayIndex(0)
 {
-    
+    zeromem(mCircularBuffer, sizeof(double) * maxBufferSize);
 }
 
 KAPDelay::~KAPDelay()
@@ -35,7 +35,7 @@ void KAPDelay::setSampleRate(double inSampleRate)
 void KAPDelay::reset()
 {
     mTimeSmoothed = 0.0f;
-    zeromem(mBuffer, sizeof(double) * maxBufferSize);
+    zeromem(mCircularBuffer, sizeof(double) * maxBufferSize);
 }
 
 void KAPDelay::process(float* inAudio,
@@ -48,29 +48,37 @@ void KAPDelay::process(float* inAudio,
 {
     const float wet = inWetDry;
     const float dry = 1.0f - wet;
+    
+    // this will keep feedback in a stable range 0 - 0.95
     const float feedbackMapped = jmap(inFeedback, 0.0f, 1.0f, 0.0f, 0.95f);
     
-    int index = 0;
-    
-    for (int i = 0; i < inNumSamplesToRender; i++) {
-        
+    for (int i = 0; i < inNumSamplesToRender; i++)
+    {
+        // delayTimeModulation is an adjustment to the delaytime (inTime) by applying the LFO
         const double delayTimeModulation = (inTime + (0.002 * inModulationBuffer[i]));
         
         mTimeSmoothed = mTimeSmoothed - kParameterSmoothingCoeff_Fine * (mTimeSmoothed - delayTimeModulation);
         
+        // after we smooth the modulation value to prevent discontinuities, we figure out the number of samples of delay
         const double delayTimeInSamples = (mTimeSmoothed * mSampleRate);
         
+        // read the current sample
         const double sample = getInterpolatedSample(delayTimeInSamples);
         
-        mBuffer[mDelayIndex] = inAudio[i] + (mFeedbackSample * feedbackMapped);
+        // write back into the circular buffer applying the feedback to the current sample
+        mCircularBuffer[mDelayIndex] = inAudio[i] + (sample /*mFeedbackSample*/ * feedbackMapped);
         
-        mFeedbackSample = sample;
+//        mFeedbackSample = sample;
         
+        // and write the mix to the output buffer using the current sample
         outAudio[i] = (inAudio[i] * dry) + (sample * wet);
         
+        /** mDelayIndex is the write pointer - and we are only incrementing it by 1
+         so we just reset to 0 when out of bounds
+         */
         mDelayIndex = mDelayIndex + 1;
         if (mDelayIndex >= maxBufferSize) {
-            mDelayIndex = mDelayIndex - maxBufferSize;
+            mDelayIndex = 0; //mDelayIndex - maxBufferSize;
         }
     }
 }
@@ -93,8 +101,8 @@ double KAPDelay::getInterpolatedSample(float inDelayTimeInSamples)
         index_y1 = index_y1 - maxBufferSize;
     }
     
-    const float sample_y0 = mBuffer[index_y0];
-    const float sample_y1 = mBuffer[index_y1];
+    const float sample_y0 = mCircularBuffer[index_y0];
+    const float sample_y1 = mCircularBuffer[index_y1];
     const float t = readPosition - (int)readPosition;
     
     double outSample = kap_linear_interp(sample_y0, sample_y1, t);

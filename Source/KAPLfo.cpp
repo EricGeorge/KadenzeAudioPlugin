@@ -11,8 +11,10 @@
 #include "KAPLfo.h"
 
 KAPLfo::KAPLfo()
+:   mSampleRate(-1),
+    mPhase(0.0)
 {
-    reset();
+    zeromem(mBuffer, sizeof(float) * maxBufferSize);
 }
 
 KAPLfo::~KAPLfo()
@@ -39,9 +41,9 @@ void KAPLfo::process(float inRate, float inDepth, int inNumSamples)
     {
         mPhase = mPhase + (rate / mSampleRate);
         
-        if (mPhase > 1)
+        if (mPhase > 1.0f)
         {
-            mPhase  = mPhase - 1;
+            mPhase  = mPhase - 1.0f;
         }
         
         const float lfoPosition = sinf(mPhase * k2PI) * inDepth;

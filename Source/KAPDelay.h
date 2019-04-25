@@ -37,8 +37,8 @@ private:
     double getInterpolatedSample(float inDelayTimeInSamples);
     
     double mSampleRate;
-    double mBuffer[maxBufferSize];
-    double mFeedbackSample;
+    double mCircularBuffer[maxBufferSize];
+//    double mFeedbackSample;
     
     float mTimeSmoothed;
     
