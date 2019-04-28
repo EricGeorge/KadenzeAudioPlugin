@@ -66,9 +66,7 @@ void KAPDelay::process(float* inAudio,
         const double sample = getInterpolatedSample(delayTimeInSamples);
         
         // write back into the circular buffer applying the feedback to the current sample
-        mCircularBuffer[mDelayIndex] = inAudio[i] + (sample /*mFeedbackSample*/ * feedbackMapped);
-        
-//        mFeedbackSample = sample;
+        mCircularBuffer[mDelayIndex] = inAudio[i] + (sample * feedbackMapped);
         
         // and write the mix to the output buffer using the current sample
         outAudio[i] = (inAudio[i] * dry) + (sample * wet);
@@ -78,7 +76,7 @@ void KAPDelay::process(float* inAudio,
          */
         mDelayIndex = mDelayIndex + 1;
         if (mDelayIndex >= maxBufferSize) {
-            mDelayIndex = 0; //mDelayIndex - maxBufferSize;
+            mDelayIndex = 0;
         }
     }
 }
