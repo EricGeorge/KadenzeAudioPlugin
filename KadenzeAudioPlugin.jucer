@@ -4,48 +4,50 @@
               jucerVersion="5.4.3">
   <MAINGROUP id="j3FPXa" name="KadenzeAudioPlugin">
     <GROUP id="{0687EAE4-FF9D-4538-9D5E-8E926A9C684C}" name="Panels">
-      <FILE id="sZi7z6" name="KAPCenterPanel.cpp" compile="1" resource="0"
-            file="Source/KAPCenterPanel.cpp"/>
-      <FILE id="StqAs2" name="KAPCenterPanel.h" compile="0" resource="0"
-            file="Source/KAPCenterPanel.h"/>
-      <FILE id="SbqRuE" name="KAPCenterPanelMenuBar.cpp" compile="1" resource="0"
-            file="Source/KAPCenterPanelMenuBar.cpp"/>
-      <FILE id="zgHHMc" name="KAPCenterPanelMenuBar.h" compile="0" resource="0"
-            file="Source/KAPCenterPanelMenuBar.h"/>
-      <FILE id="voH9ht" name="KAPFxPanel.cpp" compile="1" resource="0" file="Source/KAPFxPanel.cpp"/>
-      <FILE id="nuFfQH" name="KAPFxPanel.h" compile="0" resource="0" file="Source/KAPFxPanel.h"/>
-      <FILE id="SpgVy6" name="KAPGainPanel.cpp" compile="1" resource="0"
-            file="Source/KAPGainPanel.cpp"/>
-      <FILE id="VOv7am" name="KAPGainPanel.h" compile="0" resource="0" file="Source/KAPGainPanel.h"/>
-      <FILE id="gBK7dy" name="KAPMainPanel.cpp" compile="1" resource="0"
-            file="Source/KAPMainPanel.cpp"/>
-      <FILE id="BcZOLe" name="KAPMainPanel.h" compile="0" resource="0" file="Source/KAPMainPanel.h"/>
+      <FILE id="FWS4sV" name="KAPPanelBase.h" compile="0" resource="0" file="Source/KAPPanelBase.h"/>
       <FILE id="BiAKnX" name="KAPPanelBase.cpp" compile="1" resource="0"
             file="Source/KAPPanelBase.cpp"/>
-      <FILE id="FWS4sV" name="KAPPanelBase.h" compile="0" resource="0" file="Source/KAPPanelBase.h"/>
-      <FILE id="i0NJww" name="KAPTopPanel.cpp" compile="1" resource="0" file="Source/KAPTopPanel.cpp"/>
+      <FILE id="StqAs2" name="KAPCenterPanel.h" compile="0" resource="0"
+            file="Source/KAPCenterPanel.h"/>
+      <FILE id="sZi7z6" name="KAPCenterPanel.cpp" compile="1" resource="0"
+            file="Source/KAPCenterPanel.cpp"/>
+      <FILE id="zgHHMc" name="KAPCenterPanelMenuBar.h" compile="0" resource="0"
+            file="Source/KAPCenterPanelMenuBar.h"/>
+      <FILE id="SbqRuE" name="KAPCenterPanelMenuBar.cpp" compile="1" resource="0"
+            file="Source/KAPCenterPanelMenuBar.cpp"/>
+      <FILE id="nuFfQH" name="KAPFxPanel.h" compile="0" resource="0" file="Source/KAPFxPanel.h"/>
+      <FILE id="voH9ht" name="KAPFxPanel.cpp" compile="1" resource="0" file="Source/KAPFxPanel.cpp"/>
+      <FILE id="VOv7am" name="KAPGainPanel.h" compile="0" resource="0" file="Source/KAPGainPanel.h"/>
+      <FILE id="SpgVy6" name="KAPGainPanel.cpp" compile="1" resource="0"
+            file="Source/KAPGainPanel.cpp"/>
+      <FILE id="BcZOLe" name="KAPMainPanel.h" compile="0" resource="0" file="Source/KAPMainPanel.h"/>
+      <FILE id="gBK7dy" name="KAPMainPanel.cpp" compile="1" resource="0"
+            file="Source/KAPMainPanel.cpp"/>
       <FILE id="kZN7Fr" name="KAPTopPanel.h" compile="0" resource="0" file="Source/KAPTopPanel.h"/>
+      <FILE id="i0NJww" name="KAPTopPanel.cpp" compile="1" resource="0" file="Source/KAPTopPanel.cpp"/>
     </GROUP>
     <GROUP id="{A5856BDB-5970-9492-758B-80A455A7EAC2}" name="Helpers">
       <FILE id="PuOiqF" name="KAPAudioHelpers.h" compile="0" resource="0"
             file="Source/KAPAudioHelpers.h"/>
+      <FILE id="UtFGY9" name="KAPInterfaceDefines.h" compile="0" resource="0"
+            file="Source/KAPInterfaceDefines.h"/>
     </GROUP>
     <GROUP id="{0A9122AF-D631-FEDE-58C0-958F966E1077}" name="DSP">
-      <FILE id="ZqABqU" name="KAPDelay.cpp" compile="1" resource="0" file="Source/KAPDelay.cpp"/>
       <FILE id="rhzBaX" name="KAPDelay.h" compile="0" resource="0" file="Source/KAPDelay.h"/>
-      <FILE id="Fesjnl" name="KAPGain.cpp" compile="1" resource="0" file="Source/KAPGain.cpp"/>
+      <FILE id="ZqABqU" name="KAPDelay.cpp" compile="1" resource="0" file="Source/KAPDelay.cpp"/>
       <FILE id="YwKGWA" name="KAPGain.h" compile="0" resource="0" file="Source/KAPGain.h"/>
-      <FILE id="yDutAs" name="KAPLfo.cpp" compile="1" resource="0" file="Source/KAPLfo.cpp"/>
+      <FILE id="Fesjnl" name="KAPGain.cpp" compile="1" resource="0" file="Source/KAPGain.cpp"/>
       <FILE id="O7paaN" name="KAPLfo.h" compile="0" resource="0" file="Source/KAPLfo.h"/>
+      <FILE id="yDutAs" name="KAPLfo.cpp" compile="1" resource="0" file="Source/KAPLfo.cpp"/>
     </GROUP>
     <GROUP id="{AB38E924-BE41-BEBA-9BD2-66291057DD3D}" name="Source">
-      <FILE id="kj3RCw" name="PluginProcessor.cpp" compile="1" resource="0"
-            file="Source/PluginProcessor.cpp"/>
       <FILE id="QWSoTf" name="PluginProcessor.h" compile="0" resource="0"
             file="Source/PluginProcessor.h"/>
+      <FILE id="kj3RCw" name="PluginProcessor.cpp" compile="1" resource="0"
+            file="Source/PluginProcessor.cpp"/>
+      <FILE id="Y9JIFx" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
       <FILE id="ux6Xz6" name="PluginEditor.cpp" compile="1" resource="0"
             file="Source/PluginEditor.cpp"/>
-      <FILE id="Y9JIFx" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
     </GROUP>
   </MAINGROUP>
   <EXPORTFORMATS>

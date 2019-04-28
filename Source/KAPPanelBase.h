@@ -9,3 +9,20 @@
 */
 
 #pragma once
+
+#include "JuceHeader.h"
+#include "PluginProcessor.h"
+#include "KAPInterfaceDefines.h"
+
+class KAPPanelBase
+: public Component
+{
+public:
+    KAPPanelBase(KadenzeAudioPluginAudioProcessor* inProcessor);
+    ~KAPPanelBase();
+    
+    void paint(Graphics& g) override;
+    
+protected:
+    KadenzeAudioPluginAudioProcessor* mProcessor;
+};
