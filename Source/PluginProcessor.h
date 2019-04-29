@@ -58,12 +58,16 @@ public:
     void getStateInformation (MemoryBlock& destData) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
 
+    AudioProcessorValueTreeState parameters;
+    
 private:
     
     /** internal */
     void initializeDSP();
+    void initializeParameters();
     
-    std::unique_ptr<KAPGain> mGain[2];
+    std::unique_ptr<KAPGain> mInputGain[2];
+    std::unique_ptr<KAPGain> mOutputGain[2];
     std::unique_ptr<KAPDelay> mDelay[2];
     std::unique_ptr<KAPLfo> mLfo[2];
     

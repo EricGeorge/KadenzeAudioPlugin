@@ -3,6 +3,16 @@
 <JUCERPROJECT id="Hom8nO" name="KadenzeAudioPlugin" projectType="audioplug"
               jucerVersion="5.4.3">
   <MAINGROUP id="j3FPXa" name="KadenzeAudioPlugin">
+    <GROUP id="{DB441A3D-41A6-FFCF-B4CD-AF31695190D7}" name="Parameter Control">
+      <FILE id="CDSdUN" name="KAPParameterComboBox.h" compile="0" resource="0"
+            file="Source/KAPParameterComboBox.h"/>
+      <FILE id="PV3zvG" name="KAPParameterComboBox.cpp" compile="1" resource="0"
+            file="Source/KAPParameterComboBox.cpp"/>
+      <FILE id="GI76um" name="KAPParameterSlider.h" compile="0" resource="0"
+            file="Source/KAPParameterSlider.h"/>
+      <FILE id="L3as6c" name="KAPParameterSlider.cpp" compile="1" resource="0"
+            file="Source/KAPParameterSlider.cpp"/>
+    </GROUP>
     <GROUP id="{0687EAE4-FF9D-4538-9D5E-8E926A9C684C}" name="Panels">
       <FILE id="FWS4sV" name="KAPPanelBase.h" compile="0" resource="0" file="Source/KAPPanelBase.h"/>
       <FILE id="BiAKnX" name="KAPPanelBase.cpp" compile="1" resource="0"
@@ -31,6 +41,7 @@
             file="Source/KAPAudioHelpers.h"/>
       <FILE id="UtFGY9" name="KAPInterfaceDefines.h" compile="0" resource="0"
             file="Source/KAPInterfaceDefines.h"/>
+      <FILE id="EqrzDO" name="KAPParameters.h" compile="0" resource="0" file="Source/KAPParameters.h"/>
     </GROUP>
     <GROUP id="{0A9122AF-D631-FEDE-58C0-958F966E1077}" name="DSP">
       <FILE id="rhzBaX" name="KAPDelay.h" compile="0" resource="0" file="Source/KAPDelay.h"/>

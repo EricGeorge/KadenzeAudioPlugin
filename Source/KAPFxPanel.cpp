@@ -9,13 +9,14 @@
 */
 
 #include "KAPFxPanel.h"
-
+#include "KAPParameters.h"
 KAPFxPanel::KAPFxPanel(KadenzeAudioPluginAudioProcessor* inProcessor)
-:   KAPPanelBase(inProcessor),
-    mStyle(kKAPFxPanelStyle_Delay)
+:   KAPPanelBase(inProcessor)
 {
     setSize(FX_PANEL_WIDTH,
             FX_PANEL_HEIGHT);
+    
+    setFxPanelStyle(kKAPFxPanelStyle_Delay);
 }
 
 KAPFxPanel::~KAPFxPanel()
@@ -57,4 +58,61 @@ void KAPFxPanel::paint(Graphics& g)
 void KAPFxPanel::setFxPanelStyle(KAPFxPanelStyle inStyle)
 {
     mStyle = inStyle;
+    
+    mSliders.clear();
+    
+    const int sliderSize = 56;
+    int x = 130;
+    int y = (getHeight() * 0.5) - (sliderSize * 0.5);
+    
+    switch(mStyle) {
+        case kKAPFxPanelStyle_Delay:
+        {
+            KAPParameterSlider* time = new KAPParameterSlider(mProcessor->parameters, KAPParameterID[kParameter_DelayTime]);
+            time->setBounds(x, y, sliderSize, sliderSize);
+            addAndMakeVisible(time);
+            mSliders.add(time);
+            x = x + sliderSize * 2;
+            
+            KAPParameterSlider* feedback = new KAPParameterSlider(mProcessor->parameters, KAPParameterID[kParameter_DelayFeedback]);
+            feedback->setBounds(x, y, sliderSize, sliderSize);
+            addAndMakeVisible(feedback);
+            mSliders.add(feedback);
+            x = x + sliderSize * 2;
+            
+            KAPParameterSlider* wetDry = new KAPParameterSlider(mProcessor->parameters, KAPParameterID[kParameter_DelayWetDry]);
+            wetDry->setBounds(x, y, sliderSize, sliderSize);
+            addAndMakeVisible(wetDry);
+            mSliders.add(wetDry);
+            x = x + sliderSize * 2;
+            
+            break;
+        }
+        case kKAPFxPanelStyle_Chorus:
+        {
+            KAPParameterSlider* rate = new KAPParameterSlider(mProcessor->parameters, KAPParameterID[kParameter_ModulationRate]);
+            rate->setBounds(x, y, sliderSize, sliderSize);
+            addAndMakeVisible(rate);
+            mSliders.add(rate);
+            x = x + sliderSize * 2;
+            
+            KAPParameterSlider* depth = new KAPParameterSlider(mProcessor->parameters, KAPParameterID[kParameter_ModulationDepth]);
+            depth->setBounds(x, y, sliderSize, sliderSize);
+            addAndMakeVisible(depth);
+            mSliders.add(depth);
+            x = x + sliderSize * 2;
+            
+            KAPParameterSlider* wetDry = new KAPParameterSlider(mProcessor->parameters, KAPParameterID[kParameter_DelayWetDry]);
+            wetDry->setBounds(x, y, sliderSize, sliderSize);
+            addAndMakeVisible(wetDry);
+            mSliders.add(wetDry);
+            x = x + sliderSize * 2;
+
+            break;
+        }
+        default:
+        case kKAPFxPanelStyle_TotalNumStyles:
+            jassertfalse;
+            break;
+    }
 }

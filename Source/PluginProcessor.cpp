@@ -10,6 +10,7 @@
 
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
+#include "KAPParameters.h"
 
 //==============================================================================
 KadenzeAudioPluginAudioProcessor::KadenzeAudioPluginAudioProcessor()
@@ -21,9 +22,11 @@ KadenzeAudioPluginAudioProcessor::KadenzeAudioPluginAudioProcessor()
                       #endif
                        .withOutput ("Output", AudioChannelSet::stereo(), true)
                      #endif
-                       )
+                       ),
+    parameters(*this, nullptr)
 #endif
 {
+    initializeParameters();
     initializeDSP();
 }
 
@@ -161,25 +164,31 @@ void KadenzeAudioPluginAudioProcessor::processBlock (AudioBuffer<float>& buffer,
     {
         auto* channelData = buffer.getWritePointer (channel);
         
-        mGain[channel]->process(channelData,
-                                0.5f,
+        mInputGain[channel]->process(channelData,
+                                getParameter(kParameter_InputGain),
                                 channelData,
                                 buffer.getNumSamples());
         
         // a chorus should only modulate 1 channel
-        float rate = 0;  //(channel == 0) ? 0.0f : 0.25f;
+        float rate = (channel == 0) ? 0.0f : getParameter(kParameter_ModulationRate);
         
         mLfo[channel]->process(rate,
-                               0.5f,
+                               getParameter(kParameter_ModulationDepth),
                                buffer.getNumSamples());
         
         mDelay[channel]->process(channelData,
-                                 0.25f,
-                                 0.5f,
-                                 0.35f,
+                                 getParameter(kParameter_DelayTime),
+                                 getParameter(kParameter_DelayFeedback),
+                                 getParameter(kParameter_DelayWetDry),
                                  mLfo[channel]->getBuffer(),
                                  channelData,
                                  buffer.getNumSamples());
+        
+        mOutputGain[channel]->process(channelData,
+                                     getParameter(kParameter_OutputGain),
+                                     channelData,
+                                     buffer.getNumSamples());
+
     }
 }
 
@@ -212,10 +221,27 @@ void KadenzeAudioPluginAudioProcessor::initializeDSP()
 {
     for (int i = 0; i < 2; i++)
     {
-        mGain[i].reset(new KAPGain());
+        mInputGain[i].reset(new KAPGain());
+        mOutputGain[i].reset(new KAPGain());
         mDelay[i].reset(new KAPDelay());
         mLfo[i].reset(new KAPLfo());
     }
+}
+
+void KadenzeAudioPluginAudioProcessor::initializeParameters()
+{
+    for (int i = 0; i < kParameter_TotalNumParameters; i++)
+    {
+        parameters.createAndAddParameter(KAPParameterID[i],
+                                         KAPParameterID[i],
+                                         KAPParameterID[i],
+                                         NormalisableRange<float>(0.0f, 1.0f),
+                                         0.5f,
+                                         nullptr,
+                                         nullptr);
+    }
+    
+    parameters.state = ValueTree("foo");    // do this to avoid the assert in the newer version of JUCE
 }
 
 //==============================================================================
