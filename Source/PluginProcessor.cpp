@@ -180,6 +180,7 @@ void KadenzeAudioPluginAudioProcessor::processBlock (AudioBuffer<float>& buffer,
                                  getParameter(kParameter_DelayTime),
                                  getParameter(kParameter_DelayFeedback),
                                  getParameter(kParameter_DelayWetDry),
+                                 getParameter(kParameter_DelayType),
                                  mLfo[channel]->getBuffer(),
                                  channelData,
                                  buffer.getNumSamples());

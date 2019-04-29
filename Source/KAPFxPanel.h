@@ -21,7 +21,8 @@ enum KAPFxPanelStyle
 };
 
 class KAPFxPanel
-:   public KAPPanelBase
+:   public KAPPanelBase,
+    public ComboBox::Listener
 {
 public:
     
@@ -31,6 +32,8 @@ public:
     void paint(Graphics& g) override;
     
     void setFxPanelStyle(KAPFxPanelStyle inStyle);
+    
+    void comboBoxChanged (ComboBox* comboBoxThatHasChanged) override;
     
 private:
     KAPFxPanelStyle mStyle;

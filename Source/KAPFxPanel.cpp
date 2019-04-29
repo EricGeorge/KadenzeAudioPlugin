@@ -10,13 +10,16 @@
 
 #include "KAPFxPanel.h"
 #include "KAPParameters.h"
+#include "KAPHelperFunctions.h"
+
 KAPFxPanel::KAPFxPanel(KadenzeAudioPluginAudioProcessor* inProcessor)
 :   KAPPanelBase(inProcessor)
 {
     setSize(FX_PANEL_WIDTH,
             FX_PANEL_HEIGHT);
     
-    setFxPanelStyle(kKAPFxPanelStyle_Delay);
+    const int currentStyle = (int)mProcessor->getParameter(kParameter_DelayType);
+    setFxPanelStyle((KAPFxPanelStyle)currentStyle);
 }
 
 KAPFxPanel::~KAPFxPanel()
@@ -34,7 +37,7 @@ void KAPFxPanel::paint(Graphics& g)
                              0,
                              0,
                              getWidth(),
-                             getHeight(),
+                             getHeight() * 0.75,
                              Justification::centred,
                              1);
             break;
@@ -43,7 +46,7 @@ void KAPFxPanel::paint(Graphics& g)
                              0,
                              0,
                              getWidth(),
-                             getHeight(),
+                             getHeight() * 0.75,
                              Justification::centred,
                              1);
             break;
@@ -52,6 +55,11 @@ void KAPFxPanel::paint(Graphics& g)
             // should make kKAPFxPanelStyle_TotalNumStyles = last style (kKAPFxPanelStyle_Chorus) instead!
             jassertfalse;
             break;
+    }
+    
+    for (int i = 0; i < mSliders.size(); i++)
+    {
+        paintComponentLabel(g, mSliders[i]);
     }
 }
 
@@ -115,4 +123,12 @@ void KAPFxPanel::setFxPanelStyle(KAPFxPanelStyle inStyle)
             jassertfalse;
             break;
     }
+    
+    repaint();
+}
+
+void KAPFxPanel::comboBoxChanged (ComboBox* comboBoxThatHasChanged)
+{
+    KAPFxPanelStyle style = (KAPFxPanelStyle)comboBoxThatHasChanged->getSelectedItemIndex();
+    setFxPanelStyle(style);
 }
