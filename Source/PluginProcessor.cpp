@@ -170,7 +170,7 @@ void KadenzeAudioPluginAudioProcessor::processBlock (AudioBuffer<float>& buffer,
                                 buffer.getNumSamples());
         
         // a chorus should only modulate 1 channel
-        float rate = (channel == 0) ? 0.0f : getParameter(kParameter_ModulationRate);
+        float rate = channel==0 ? getParameter(kParameter_ModulationRate): 0;
         
         mLfo[channel]->process(rate,
                                getParameter(kParameter_ModulationDepth),

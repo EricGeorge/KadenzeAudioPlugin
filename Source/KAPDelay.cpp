@@ -50,14 +50,14 @@ void KAPDelay::process(float* inAudio,
     const float wet = inWetDry;
     const float dry = 1.0f - wet;
     
-    // this will keep feedback in a stable range 0 - 0.95
-    const float feedbackMapped = jmap(inFeedback, 0.0f, 1.0f, 0.0f, 0.95f);
+    float feedbackMapped = 0;
     
     for (int i = 0; i < inNumSamplesToRender; i++)
     {
         if ((int)inType == KAPDelayType_Delay)
         {
             mTimeSmoothed = mTimeSmoothed - kParameterSmoothingCoeff_Fine * (mTimeSmoothed - inTime);
+            feedbackMapped = jmap(inFeedback, 0.0f, 1.0f, 0.0f, 0.95f);
         }
         else
         {
@@ -72,7 +72,8 @@ void KAPDelay::process(float* inAudio,
         const double sample = getInterpolatedSample(delayTimeInSamples);
         
         // write back into the circular buffer applying the feedback to the current sample
-        mCircularBuffer[mDelayIndex] = inAudio[i] + (sample * feedbackMapped);
+        // using tanh_clip in case we want to increase our feedback above 100%.
+        mCircularBuffer[mDelayIndex] = tanh_clip(inAudio[i] + (sample * feedbackMapped));
         
         // and write the mix to the output buffer using the current sample
         outAudio[i] = (inAudio[i] * dry) + (sample * wet);
