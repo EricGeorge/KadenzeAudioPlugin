@@ -12,11 +12,12 @@
 
 
 KAPParameterSlider::KAPParameterSlider(AudioProcessorValueTreeState& stateToControl,
-                   const String& parameterID)
-:   juce::Slider(parameterID)
+                                       const String& parameterID,
+                                       const String& parameterLabel)
+:   juce::Slider(parameterLabel)
 {
     setSliderStyle(SliderStyle::RotaryHorizontalVerticalDrag);
-    setTextBoxStyle(Slider::NoTextBox, false, 0, 0);
+    setTextBoxStyle(Slider::TextEntryBoxPosition::TextBoxBelow, false, 0, 0);
     setRange(0.0f, 1.0f, 0.001f);
     
     mAttachment.reset(new AudioProcessorValueTreeState::SliderAttachment(stateToControl,

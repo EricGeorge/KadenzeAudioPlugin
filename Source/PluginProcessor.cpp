@@ -260,7 +260,7 @@ void KadenzeAudioPluginAudioProcessor::initializeParameters()
     {
         parameters.createAndAddParameter(KAPParameterID[i],
                                          KAPParameterID[i],
-                                         KAPParameterID[i],
+                                         KAPParameterLabel[i],
                                          NormalisableRange<float>(0.0f, 1.0f),
                                          0.5f,
                                          nullptr,

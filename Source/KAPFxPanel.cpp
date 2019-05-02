@@ -76,19 +76,19 @@ void KAPFxPanel::setFxPanelStyle(KAPFxPanelStyle inStyle)
     switch(mStyle) {
         case kKAPFxPanelStyle_Delay:
         {
-            KAPParameterSlider* time = new KAPParameterSlider(mProcessor->parameters, KAPParameterID[kParameter_DelayTime]);
+            KAPParameterSlider* time = new KAPParameterSlider(mProcessor->parameters, KAPParameterID[kParameter_DelayTime], KAPParameterLabel[kParameter_DelayTime]);
             time->setBounds(x, y, sliderSize, sliderSize);
             addAndMakeVisible(time);
             mSliders.add(time);
             x = x + sliderSize * 2;
             
-            KAPParameterSlider* feedback = new KAPParameterSlider(mProcessor->parameters, KAPParameterID[kParameter_DelayFeedback]);
+            KAPParameterSlider* feedback = new KAPParameterSlider(mProcessor->parameters, KAPParameterID[kParameter_DelayFeedback], KAPParameterLabel[kParameter_DelayFeedback]);
             feedback->setBounds(x, y, sliderSize, sliderSize);
             addAndMakeVisible(feedback);
             mSliders.add(feedback);
             x = x + sliderSize * 2;
             
-            KAPParameterSlider* wetDry = new KAPParameterSlider(mProcessor->parameters, KAPParameterID[kParameter_DelayWetDry]);
+            KAPParameterSlider* wetDry = new KAPParameterSlider(mProcessor->parameters, KAPParameterID[kParameter_DelayWetDry], KAPParameterLabel[kParameter_DelayWetDry]);
             wetDry->setBounds(x, y, sliderSize, sliderSize);
             addAndMakeVisible(wetDry);
             mSliders.add(wetDry);
@@ -98,19 +98,19 @@ void KAPFxPanel::setFxPanelStyle(KAPFxPanelStyle inStyle)
         }
         case kKAPFxPanelStyle_Chorus:
         {
-            KAPParameterSlider* rate = new KAPParameterSlider(mProcessor->parameters, KAPParameterID[kParameter_ModulationRate]);
+            KAPParameterSlider* rate = new KAPParameterSlider(mProcessor->parameters, KAPParameterID[kParameter_ModulationRate], KAPParameterLabel[kParameter_ModulationRate]);
             rate->setBounds(x, y, sliderSize, sliderSize);
             addAndMakeVisible(rate);
             mSliders.add(rate);
             x = x + sliderSize * 2;
             
-            KAPParameterSlider* depth = new KAPParameterSlider(mProcessor->parameters, KAPParameterID[kParameter_ModulationDepth]);
+            KAPParameterSlider* depth = new KAPParameterSlider(mProcessor->parameters, KAPParameterID[kParameter_ModulationDepth], KAPParameterLabel[kParameter_ModulationDepth]);
             depth->setBounds(x, y, sliderSize, sliderSize);
             addAndMakeVisible(depth);
             mSliders.add(depth);
             x = x + sliderSize * 2;
             
-            KAPParameterSlider* wetDry = new KAPParameterSlider(mProcessor->parameters, KAPParameterID[kParameter_DelayWetDry]);
+            KAPParameterSlider* wetDry = new KAPParameterSlider(mProcessor->parameters, KAPParameterID[kParameter_DelayWetDry], KAPParameterLabel[kParameter_DelayWetDry]);
             wetDry->setBounds(x, y, sliderSize, sliderSize);
             addAndMakeVisible(wetDry);
             mSliders.add(wetDry);
