@@ -14,6 +14,7 @@
 #include "KAPGain.h"
 #include "KAPDelay.h"
 #include "KAPLfo.h"
+#include "KAPPresetManager.h"
 
 //==============================================================================
 /**
@@ -60,6 +61,11 @@ public:
 
     AudioProcessorValueTreeState parameters;
     
+    KAPPresetManager* getPresetManager()
+    {
+        return mPresetManager.get();
+    }
+    
 private:
     
     /** internal */
@@ -70,6 +76,8 @@ private:
     std::unique_ptr<KAPGain> mOutputGain[2];
     std::unique_ptr<KAPDelay> mDelay[2];
     std::unique_ptr<KAPLfo> mLfo[2];
+    
+    std::unique_ptr<KAPPresetManager> mPresetManager;
     
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (KadenzeAudioPluginAudioProcessor)

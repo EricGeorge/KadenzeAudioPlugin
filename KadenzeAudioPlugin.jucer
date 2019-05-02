@@ -3,6 +3,12 @@
 <JUCERPROJECT id="Hom8nO" name="KadenzeAudioPlugin" projectType="audioplug"
               jucerVersion="5.4.3">
   <MAINGROUP id="j3FPXa" name="KadenzeAudioPlugin">
+    <GROUP id="{DE15541D-B50C-A998-B07E-32D1AAF23AE2}" name="Managers">
+      <FILE id="mVjVD4" name="KAPPresetManager.cpp" compile="1" resource="0"
+            file="Source/KAPPresetManager.cpp"/>
+      <FILE id="eal3d2" name="KAPPresetManager.h" compile="0" resource="0"
+            file="Source/KAPPresetManager.h"/>
+    </GROUP>
     <GROUP id="{DB441A3D-41A6-FFCF-B4CD-AF31695190D7}" name="Parameter Control">
       <FILE id="CDSdUN" name="KAPParameterComboBox.h" compile="0" resource="0"
             file="Source/KAPParameterComboBox.h"/>
