@@ -110,7 +110,7 @@ void KAPTopPanel::displaySaveAsPopup()
     window.centreAroundComponent(this, getWidth(), getHeight());
     window.addTextEditor("presetName", currentPresetName, "preset name:");
     window.addButton("Confirm", 1);
-    window.addButton("Candle", 0);
+    window.addButton("Cancel", 0);
     
     if (window.runModalLoop())
     {
