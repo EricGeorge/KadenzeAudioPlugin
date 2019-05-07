@@ -22,4 +22,9 @@ public:
                  float* outAudio,
                  int inNumSamplesToRender);
     
+    float getMeterLeve();
+    
+private:
+    float mOutputSmoothed;
+    
 };

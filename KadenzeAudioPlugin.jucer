@@ -3,6 +3,10 @@
 <JUCERPROJECT id="Hom8nO" name="KadenzeAudioPlugin" projectType="audioplug"
               jucerVersion="5.4.3">
   <MAINGROUP id="j3FPXa" name="KadenzeAudioPlugin">
+    <GROUP id="{CC4BF43D-C9D9-E641-C3B8-330DDE38B705}" name="Components">
+      <FILE id="ZccD0f" name="KAPVuMeter.cpp" compile="1" resource="0" file="Source/KAPVuMeter.cpp"/>
+      <FILE id="YEKiKS" name="KAPVuMeter.h" compile="0" resource="0" file="Source/KAPVuMeter.h"/>
+    </GROUP>
     <GROUP id="{DE15541D-B50C-A998-B07E-32D1AAF23AE2}" name="Managers">
       <FILE id="mVjVD4" name="KAPPresetManager.cpp" compile="1" resource="0"
             file="Source/KAPPresetManager.cpp"/>
@@ -49,6 +53,8 @@
             file="Source/KAPHelperFunctions.h"/>
       <FILE id="UtFGY9" name="KAPInterfaceDefines.h" compile="0" resource="0"
             file="Source/KAPInterfaceDefines.h"/>
+      <FILE id="AavwFy" name="KAPLookAndFeel.h" compile="0" resource="0"
+            file="Source/KAPLookAndFeel.h"/>
       <FILE id="EqrzDO" name="KAPParameters.h" compile="0" resource="0" file="Source/KAPParameters.h"/>
     </GROUP>
     <GROUP id="{0A9122AF-D631-FEDE-58C0-958F966E1077}" name="DSP">
@@ -67,6 +73,11 @@
       <FILE id="Y9JIFx" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
       <FILE id="ux6Xz6" name="PluginEditor.cpp" compile="1" resource="0"
             file="Source/PluginEditor.cpp"/>
+    </GROUP>
+    <GROUP id="{C3209AA6-9740-3BD6-6C66-ABBF09ACBABB}" name="Assets">
+      <FILE id="cviDCv" name="kadenze_bg.png" compile="0" resource="1" file="Assets/kadenze_bg.png"/>
+      <FILE id="FACawz" name="kadenze_knob.png" compile="0" resource="1"
+            file="Assets/kadenze_knob.png"/>
     </GROUP>
   </MAINGROUP>
   <EXPORTFORMATS>

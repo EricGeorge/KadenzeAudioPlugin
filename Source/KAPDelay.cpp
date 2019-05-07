@@ -47,6 +47,7 @@ void KAPDelay::process(float* inAudio,
                        float* outAudio,
                        int inNumSamplesToRender)
 {
+    // TODO:  Smooth the wet/dry so there isn't a zipper noise when turning
     const float wet = inWetDry;
     const float dry = 1.0f - wet;
     

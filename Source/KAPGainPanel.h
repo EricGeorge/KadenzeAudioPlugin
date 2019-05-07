@@ -12,6 +12,7 @@
 
 #include "KAPPanelBase.h"
 #include "KAPParameterSlider.h"
+#include "KAPVuMeter.h"
 
 class KAPGainPanel
 :   public KAPPanelBase
@@ -28,4 +29,5 @@ public:
 private:
     
     std::unique_ptr<KAPParameterSlider> mSlider;
+    std::unique_ptr<KAPVuMeter> mVuMeter;
 };

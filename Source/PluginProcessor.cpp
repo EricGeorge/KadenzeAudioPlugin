@@ -243,6 +243,18 @@ void KadenzeAudioPluginAudioProcessor::setStateInformation (const void* data, in
     }
 }
 
+float KadenzeAudioPluginAudioProcessor::getInputMeterGainLevel(int inChannel)
+{
+    const float normalizeddB = dbToNormalizedGain(mInputGain[inChannel]->getMeterLeve());
+    return normalizeddB;
+}
+
+float KadenzeAudioPluginAudioProcessor::getOutputMeterGainLevel(int inChannel)
+{
+    const float normalizeddB = dbToNormalizedGain(mOutputGain[inChannel]->getMeterLeve());
+    return normalizeddB;
+}
+
 void KadenzeAudioPluginAudioProcessor::initializeDSP()
 {
     for (int i = 0; i < 2; i++)

@@ -59,6 +59,9 @@ public:
     void getStateInformation (MemoryBlock& destData) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
 
+    float getInputMeterGainLevel(int inChannel);
+    float getOutputMeterGainLevel(int inChannel);
+    
     AudioProcessorValueTreeState parameters;
     
     KAPPresetManager* getPresetManager()

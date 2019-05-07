@@ -10,6 +10,7 @@
 
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
+#include "KAPLookAndFeel.h"
 
 //==============================================================================
 KadenzeAudioPluginAudioProcessorEditor::KadenzeAudioPluginAudioProcessorEditor (KadenzeAudioPluginAudioProcessor& p)
@@ -20,23 +21,28 @@ KadenzeAudioPluginAudioProcessorEditor::KadenzeAudioPluginAudioProcessorEditor (
     setSize (MAIN_PANEL_WIDTH,
              MAIN_PANEL_HEIGHT);
     
+    mLookAndFeel.reset(new KAPLookAndFeel);
+    setLookAndFeel(mLookAndFeel.get());
+    LookAndFeel::setDefaultLookAndFeel(mLookAndFeel.get());
+    
+    mBackgroundImage = ImageCache::getFromMemory(BinaryData::kadenze_bg_png, BinaryData::kadenze_bg_pngSize);
+    
     mMainPanel.reset(new KAPMainPanel(&processor));
     addAndMakeVisible(mMainPanel.get());
 }
 
 KadenzeAudioPluginAudioProcessorEditor::~KadenzeAudioPluginAudioProcessorEditor()
 {
+    setLookAndFeel(nullptr);
+    LookAndFeel::setDefaultLookAndFeel(nullptr);
+    mLookAndFeel.reset();
 }
 
 //==============================================================================
 void KadenzeAudioPluginAudioProcessorEditor::paint (Graphics& g)
 {
     // (Our component is opaque, so we must completely fill the background with a solid colour)
-    g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));
-
-    g.setColour (Colours::white);
-    g.setFont (15.0f);
-    g.drawFittedText ("Hello World!", getLocalBounds(), Justification::centred, 1);
+    g.drawImage(mBackgroundImage, getLocalBounds().toFloat());
 }
 
 void KadenzeAudioPluginAudioProcessorEditor::resized()

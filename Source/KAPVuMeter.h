@@ -1,8 +1,8 @@
 /*
   ==============================================================================
 
-    KAPPanelBase.h
-    Created: 27 Apr 2019 6:52:41pm
+    KAPVuMeter.h
+    Created: 6 May 2019 7:38:11pm
     Author:  Eric
 
   ==============================================================================
@@ -12,20 +12,26 @@
 
 #include "JuceHeader.h"
 #include "PluginProcessor.h"
-#include "KAPInterfaceDefines.h"
 
-class KAPPanelBase
-: public Component
+class KAPVuMeter
+:   public Component,
+    public Timer
 {
 public:
-    KAPPanelBase(KadenzeAudioPluginAudioProcessor* inProcessor);
-    ~KAPPanelBase();
+    KAPVuMeter(KadenzeAudioPluginAudioProcessor* inProcessor);
+    ~KAPVuMeter();
     
     void paint(Graphics& g) override;
     
-    void mouseEnter(const MouseEvent& event) override;
-    void mouseExit(const MouseEvent& event) override;
+    void timerCallback() override;
     
-protected:
+    void setParameterID(int inParameterID);
+    
+private:
+    int mParameterID;
+    
+    float mCh0Level;
+    float mCh1Level;
+    
     KadenzeAudioPluginAudioProcessor* mProcessor;
 };

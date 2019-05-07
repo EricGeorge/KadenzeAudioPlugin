@@ -31,31 +31,24 @@ void KAPFxPanel::paint(Graphics& g)
 {
     KAPPanelBase::paint(g);
     
+    String label;
+    
     switch(mStyle) {
         case kKAPFxPanelStyle_Delay:
-            g.drawFittedText("DELAY",
-                             0,
-                             0,
-                             getWidth(),
-                             getHeight() * 0.75,
-                             Justification::centred,
-                             1);
+            label = "DELAY";
             break;
         case kKAPFxPanelStyle_Chorus:
-            g.drawFittedText("CHORUS",
-                             0,
-                             0,
-                             getWidth(),
-                             getHeight() * 0.75,
-                             Justification::centred,
-                             1);
+            label = "CHORUS";
             break;
         default:
         case kKAPFxPanelStyle_TotalNumStyles:
-            // should make kKAPFxPanelStyle_TotalNumStyles = last style (kKAPFxPanelStyle_Chorus) instead!
             jassertfalse;
-            break;
     }
+    
+    g.setColour(KAPColour_5);
+    g.setFont(font_3);
+    
+    g.drawText(label, 0, 0, getWidth(), 80, Justification::centred);
     
     for (int i = 0; i < mSliders.size(); i++)
     {
