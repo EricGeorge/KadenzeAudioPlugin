@@ -73,7 +73,7 @@ private:
     
     /** internal */
     void initializeDSP();
-    void initializeParameters();
+    AudioProcessorValueTreeState::ParameterLayout createParameterLayout();
     
     std::unique_ptr<KAPGain> mInputGain[2];
     std::unique_ptr<KAPGain> mOutputGain[2];
