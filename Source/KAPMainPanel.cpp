@@ -13,31 +13,30 @@
 
 
 KAPMainPanel::KAPMainPanel(KadenzeAudioPluginAudioProcessor* inProcessor)
-: KAPPanelBase(inProcessor)
+:   KAPPanelBase(inProcessor)
 {
-    setSize(MAIN_PANEL_WIDTH,
-            MAIN_PANEL_HEIGHT);
+    setSize(mainPanelWidth,
+            mainPanelHeight);
     
     mTopPanel.reset(new KAPTopPanel(inProcessor));
     mTopPanel->setTopLeftPosition(0, 0);
     addAndMakeVisible(mTopPanel.get());
     
     mInputGainPanel.reset(new KAPGainPanel(inProcessor));
-    mInputGainPanel->setTopLeftPosition(0, TOP_PANEL_HEIGHT);
+    mInputGainPanel->setTopLeftPosition(0, topPanelHeight);
     mInputGainPanel->setParameterID(kParameter_InputGain);
     addAndMakeVisible(mInputGainPanel.get());
 
     mOutputGainPanel.reset(new KAPGainPanel(inProcessor));
-    mOutputGainPanel->setTopLeftPosition(MAIN_PANEL_WIDTH - GAIN_PANEL_WIDTH , TOP_PANEL_HEIGHT);
+    mOutputGainPanel->setTopLeftPosition(mainPanelWidth - gainPanelWidth , topPanelHeight);
     mOutputGainPanel->setParameterID(kParameter_OutputGain);
     addAndMakeVisible(mOutputGainPanel.get());
     
     mCenterPanel.reset(new KAPCenterPanel(inProcessor));
-    mCenterPanel->setTopLeftPosition(GAIN_PANEL_WIDTH, TOP_PANEL_HEIGHT);
+    mCenterPanel->setTopLeftPosition(gainPanelWidth, topPanelHeight);
     addAndMakeVisible(mCenterPanel.get());
 }
 
 KAPMainPanel::~KAPMainPanel()
 {
-    
 }

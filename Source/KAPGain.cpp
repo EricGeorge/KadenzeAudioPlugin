@@ -14,12 +14,10 @@
 KAPGain::KAPGain()
 :   mOutputSmoothed(0.0f)
 {
-    
 }
 
 KAPGain::~KAPGain()
 {
-    
 }
 
 void KAPGain::process(float* inAudio,
@@ -36,7 +34,7 @@ void KAPGain::process(float* inAudio,
     }
     
     float absValue = fabs(outAudio[0]);
-    mOutputSmoothed = kMeterSmoothingCoeff * (mOutputSmoothed - absValue) + absValue;
+    mOutputSmoothed = meterSmoothingCoeff * (mOutputSmoothed - absValue) + absValue;
 }
 
 float KAPGain::getMeterLeve()

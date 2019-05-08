@@ -12,7 +12,6 @@
 
 class KAPGain
 {
-    
 public:
     KAPGain();
     ~KAPGain();
@@ -26,5 +25,4 @@ public:
     
 private:
     float mOutputSmoothed;
-    
 };

@@ -27,5 +27,4 @@ KAPParameterSlider::KAPParameterSlider(AudioProcessorValueTreeState& stateToCont
 
 KAPParameterSlider::~KAPParameterSlider()
 {
-    
 }

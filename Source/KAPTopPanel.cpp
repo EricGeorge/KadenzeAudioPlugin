@@ -11,10 +11,10 @@
 #include "KAPTopPanel.h"
 
 KAPTopPanel::KAPTopPanel(KadenzeAudioPluginAudioProcessor* inProcessor)
-: KAPPanelBase(inProcessor)
+:   KAPPanelBase(inProcessor)
 {
-    setSize(TOP_PANEL_WIDTH,
-            TOP_PANEL_HEIGHT);
+    setSize(topPanelWidth,
+            topPanelHeight);
     
     int button_x = 15;
     const int button_y = 10;
@@ -43,7 +43,7 @@ KAPTopPanel::KAPTopPanel(KadenzeAudioPluginAudioProcessor* inProcessor)
     button_x = button_x + button_w;
     
     const int comboBox_w = 200;
-    const int comboBox_x = TOP_PANEL_WIDTH * 0.5 - comboBox_w * 0.5;
+    const int comboBox_x = topPanelWidth * 0.5 - comboBox_w * 0.5;
     
     mPresetDisplay.reset(new ComboBox);
     mPresetDisplay->setBounds(comboBox_x, button_y, comboBox_w, button_h);
@@ -55,7 +55,6 @@ KAPTopPanel::KAPTopPanel(KadenzeAudioPluginAudioProcessor* inProcessor)
 
 KAPTopPanel::~KAPTopPanel()
 {
-    
 }
 
 void KAPTopPanel::paint(Graphics& g)
@@ -68,7 +67,7 @@ void KAPTopPanel::paint(Graphics& g)
     const int label_w = 220;
     
     g.drawFittedText("Kadenze Audio Plugin",
-                     TOP_PANEL_WIDTH - label_w,
+                     topPanelWidth - label_w,
                      0,
                      label_w - getHeight(),
                      getHeight(),

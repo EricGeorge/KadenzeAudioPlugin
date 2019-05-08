@@ -14,11 +14,9 @@
 #include "KAPParameterSlider.h"
 #include "KAPVuMeter.h"
 
-class KAPGainPanel
-:   public KAPPanelBase
+class KAPGainPanel  : public KAPPanelBase
 {
 public:
-    
     KAPGainPanel(KadenzeAudioPluginAudioProcessor* inProcessor);
     ~KAPGainPanel();
     
@@ -27,7 +25,6 @@ public:
     void paint(Graphics& g) override;
     
 private:
-    
     std::unique_ptr<KAPParameterSlider> mSlider;
     std::unique_ptr<KAPVuMeter> mVuMeter;
 };

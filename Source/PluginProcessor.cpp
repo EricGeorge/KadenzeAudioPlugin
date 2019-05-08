@@ -169,13 +169,13 @@ void KadenzeAudioPluginAudioProcessor::processBlock (AudioBuffer<float>& buffer,
         
         float inputGain = *parameters.getRawParameterValue(KAPParameterID[kParameter_InputGain]);
         mInputGain[channel]->process(channelData,
-                                inputGain,
-                                channelData,
-                                buffer.getNumSamples());
+                                     inputGain,
+                                     channelData,
+                                     buffer.getNumSamples());
         
         // a chorus should only modulate 1 channel
         float modulationRate = *parameters.getRawParameterValue(KAPParameterID[kParameter_ModulationRate]);
-        float rate = channel==0 ? modulationRate: 0;
+        float rate = (channel == 0) ? modulationRate: 0;
         
         float modulationDepth = *parameters.getRawParameterValue(KAPParameterID[kParameter_ModulationDepth]);
         mLfo[channel]->process(rate,
@@ -221,7 +221,6 @@ void KadenzeAudioPluginAudioProcessor::getStateInformation (MemoryBlock& destDat
     // You should use this method to store your parameters in the memory block.
     // You could do that either as raw data, or use the XML or ValueTree classes
     // as intermediaries to make it easy to save and load complex data.
-    
     
     XmlElement preset("KAP_StateInfo");
     XmlElement* presetBody = new XmlElement("KAP_Preset");

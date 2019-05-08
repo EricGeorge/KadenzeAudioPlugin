@@ -11,17 +11,17 @@
 #include "KAPCenterPanel.h"
 
 KAPCenterPanel::KAPCenterPanel(KadenzeAudioPluginAudioProcessor* inProcessor)
-: KAPPanelBase(inProcessor)
+:   KAPPanelBase(inProcessor)
 {
-    setSize(CENTER_PANEL_WIDTH,
-            CENTER_PANEL_HEIGHT);
+    setSize(centerPanelWidth,
+            centerPanelHeight);
     
     mMenuBar.reset(new KAPCenterPanelMenuBar(inProcessor));
-    mMenuBar->setTopLeftPosition(0,0);
+    mMenuBar->setTopLeftPosition(0, 0);
     addAndMakeVisible(mMenuBar.get());
     
     mFxPanel.reset(new KAPFxPanel(inProcessor));
-    mFxPanel->setTopLeftPosition(0, CENTER_PANEL_MENU_BAR_HEIGHT);
+    mFxPanel->setTopLeftPosition(0, centerPanelMenuBarHeight);
     addAndMakeVisible(mFxPanel.get());
     
     mMenuBar->addFxTypeComboBoxListener(mFxPanel.get());

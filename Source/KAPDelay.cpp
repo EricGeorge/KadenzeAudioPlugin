@@ -10,12 +10,10 @@
 
 #include "KAPDelay.h"
 #include "KAPAudioHelpers.h"
-
 #include "JuceHeader.h"
 
 KAPDelay::KAPDelay()
 :   mSampleRate(-1),
-//    mFeedbackSample(0.0),
     mTimeSmoothed(0.0),
     mDelayIndex(0)
 {
@@ -24,7 +22,6 @@ KAPDelay::KAPDelay()
 
 KAPDelay::~KAPDelay()
 {
-    
 }
 
 void KAPDelay::setSampleRate(double inSampleRate)
@@ -57,13 +54,13 @@ void KAPDelay::process(float* inAudio,
     {
         if ((int)inType == KAPDelayType_Delay)
         {
-            mTimeSmoothed = mTimeSmoothed - kParameterSmoothingCoeff_Fine * (mTimeSmoothed - inTime);
+            mTimeSmoothed = mTimeSmoothed - parameterSmoothingCoeff_Fine * (mTimeSmoothed - inTime);
             feedbackMapped = jmap(inFeedback, 0.0f, 1.0f, 0.0f, 0.95f);
         }
         else
         {
             const double delayTimeModulation = (0.003 + (0.002 * inModulationBuffer[i]));
-            mTimeSmoothed = mTimeSmoothed - kParameterSmoothingCoeff_Fine * (mTimeSmoothed - delayTimeModulation);
+            mTimeSmoothed = mTimeSmoothed - parameterSmoothingCoeff_Fine * (mTimeSmoothed - delayTimeModulation);
         }
     
         // after we smooth the modulation value to prevent discontinuities, we figure out the number of samples of delay
@@ -83,7 +80,8 @@ void KAPDelay::process(float* inAudio,
          so we just reset to 0 when out of bounds
          */
         mDelayIndex = mDelayIndex + 1;
-        if (mDelayIndex >= maxBufferSize) {
+        if (mDelayIndex >= maxBufferSize)
+        {
             mDelayIndex = 0;
         }
     }
@@ -92,18 +90,19 @@ void KAPDelay::process(float* inAudio,
 double KAPDelay::getInterpolatedSample(float inDelayTimeInSamples)
 {
     double readPosition = (double)mDelayIndex - inDelayTimeInSamples;
-    if (readPosition < 0.0f) {
+    if (readPosition < 0.0f)
+    {
         readPosition = readPosition + maxBufferSize;
     }
     
     // a fractional read position will be between index_y0 and index_y1
-    
     // get the lower side by taking the int part of readPosition
     int index_y0 = readPosition;
     
     // index_y1 should be based on index_y0 - just one sample higher
     int index_y1 = index_y0 + 1;
-    if (index_y1 > maxBufferSize) {
+    if (index_y1 > maxBufferSize)
+    {
         index_y1 = index_y1 - maxBufferSize;
     }
     

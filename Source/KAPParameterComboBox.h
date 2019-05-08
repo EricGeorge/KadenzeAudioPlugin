@@ -12,19 +12,13 @@
 
 #include "JuceHeader.h"
 
-class KAPParameterComboBox
-: public ComboBox
+class KAPParameterComboBox  : public ComboBox
 {
 public:
-    
     KAPParameterComboBox(AudioProcessorValueTreeState& stateToControl,
-                       const String& parameterID);
-    
+                         const String& parameterID);
     ~KAPParameterComboBox();
     
 private:
-    
     std::unique_ptr<AudioProcessorValueTreeState::ComboBoxAttachment> mAttachment;
-    
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(KAPParameterComboBox);
 };

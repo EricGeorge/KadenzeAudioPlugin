@@ -13,11 +13,9 @@
 #include "KAPPanelBase.h"
 #include "KAPParameterComboBox.h"
 
-class KAPCenterPanelMenuBar
-:   public KAPPanelBase
+class KAPCenterPanelMenuBar  : public KAPPanelBase
 {
 public:
-    
     KAPCenterPanelMenuBar(KadenzeAudioPluginAudioProcessor* inProcessor);
     ~KAPCenterPanelMenuBar();
     

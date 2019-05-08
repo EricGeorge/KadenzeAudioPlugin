@@ -13,10 +13,10 @@
 #include "KAPHelperFunctions.h"
 
 KAPGainPanel::KAPGainPanel(KadenzeAudioPluginAudioProcessor* inProcessor)
-: KAPPanelBase(inProcessor)
+:   KAPPanelBase(inProcessor)
 {
-    setSize(GAIN_PANEL_WIDTH,
-            GAIN_PANEL_HEIGHT);
+    setSize(gainPanelWidth,
+            gainPanelHeight);
     
     const int meterWidth = 64.0f;
     mVuMeter.reset(new KAPVuMeter(mProcessor));
@@ -25,12 +25,10 @@ KAPGainPanel::KAPGainPanel(KadenzeAudioPluginAudioProcessor* inProcessor)
                         meterWidth,
                         getHeight() * 0.45f);
     addAndMakeVisible(mVuMeter.get());
-    
 }
 
 KAPGainPanel::~KAPGainPanel()
 {
-    
 }
 
 void KAPGainPanel::paint(Graphics& g)
@@ -55,6 +53,5 @@ void KAPGainPanel::setParameterID(int inParameterID)
                        sliderSize);
     
     addAndMakeVisible(mSlider.get());
-
     mVuMeter->setParameterID(inParameterID);
 }

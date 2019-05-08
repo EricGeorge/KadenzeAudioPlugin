@@ -14,7 +14,7 @@ KAPParameterComboBox::KAPParameterComboBox(AudioProcessorValueTreeState& stateTo
                                            const String& parameterID)
 :   juce::ComboBox(parameterID)
 {
-
+    
     mAttachment.reset(new AudioProcessorValueTreeState::ComboBoxAttachment(stateToControl,
                                                                            parameterID,
                                                                            *this));
@@ -22,5 +22,4 @@ KAPParameterComboBox::KAPParameterComboBox(AudioProcessorValueTreeState& stateTo
 
 KAPParameterComboBox::~KAPParameterComboBox()
 {
-    
 }

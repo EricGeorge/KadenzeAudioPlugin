@@ -12,16 +12,16 @@
 
 #include "JuceHeader.h"
 
-#define kParameterSmoothingCoeff_Generic 0.04
-#define kParameterSmoothingCoeff_Fine 0.002
-#define kMeterSmoothingCoeff 0.2
+const float parameterSmoothingCoeff_Generic = 0.04;
+const float parameterSmoothingCoeff_Fine = 0.002;
+const float meterSmoothingCoeff = 0.2;
 
-const static int maxBufferSize = 192000; // enough for 4 seconds of delay at 44100 (176400 samples)
+const int maxBufferSize = 192000; // enough for 4 seconds of delay at 44100 (176400 samples)
 
-const static double kPI = M_PI;
-const static double k2PI = 2 * kPI;
+const double kPI = M_PI;
+const double k2PI = 2 * kPI;
 
-static inline float dbToNormalizedGain(float inValue)
+inline float dbToNormalizedGain(float inValue)
 {
     float inValuedB = Decibels::gainToDecibels(inValue);
     inValuedB = (inValuedB + 96.0f) / 96.0f;

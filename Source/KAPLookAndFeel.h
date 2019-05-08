@@ -12,10 +12,8 @@
 
 #include "JuceHeader.h"
 
-class KAPLookAndFeel
-:   public LookAndFeel_V4
+class KAPLookAndFeel  : public LookAndFeel_V4
 {
-    
 public:
     KAPLookAndFeel()
     {
@@ -33,7 +31,6 @@ public:
     
     ~KAPLookAndFeel()
     {
-        
     };
     
     /** buttons */
@@ -77,11 +74,17 @@ public:
         return font_1;
     }
     
-    
-    void drawPopupMenuItem (Graphics& g, const Rectangle<int>& area,
-                            bool isSeparator, bool isActive, bool isHighlighted, bool isTicked, bool hasSubMenu,
-                            const String& text, const String& shortcutKeyText,
-                            const Drawable* icon, const Colour* textColour) override
+    void drawPopupMenuItem (Graphics& g,
+                            const Rectangle<int>& area,
+                            bool isSeparator,
+                            bool isActive,
+                            bool isHighlighted,
+                            bool isTicked,
+                            bool hasSubMenu,
+                            const String& text,
+                            const String& shortcutKeyText,
+                            const Drawable* icon,
+                            const Colour* textColour) override
     {
         juce::Rectangle<int> r(area);
 
@@ -98,8 +101,14 @@ public:
         g.drawFittedText(text, r, Justification::left, 1);
     }
 
-    void drawComboBox (Graphics& g, int width, int height, bool isButtonDown,
-                       int buttonX, int buttonY, int buttonW, int buttonH,
+    void drawComboBox (Graphics& g,
+                       int width,
+                       int height,
+                       bool isButtonDown,
+                       int buttonX,
+                       int buttonY,
+                       int buttonW,
+                       int buttonH,
                        ComboBox& box) override
     {
         const float cornerSize = 3.0f;
@@ -122,9 +131,15 @@ public:
     
     
     /** sliders */
-    void drawRotarySlider (Graphics& g, int x, int y, int width, int height,
-                           float sliderPosProportional, float rotaryStartAngle,
-                           float rotaryEndAngle, Slider& slider) override
+    void drawRotarySlider (Graphics& g,
+                           int x,
+                           int y,
+                           int width,
+                           int height,
+                           float sliderPosProportional,
+                           float rotaryStartAngle,
+                           float rotaryEndAngle,
+                           Slider& slider) override
     {
         const int numFrames = mSliderImage.getHeight() / mSliderImage.getWidth();
         const int frameIndex = (int)std::ceil(sliderPosProportional * (numFrames - 1));
@@ -145,7 +160,6 @@ public:
                     mSliderImage.getWidth(),
                     mSliderImage.getWidth());
     }
-    
     
 private:
     Image mSliderImage;

@@ -18,12 +18,10 @@ KAPVuMeter::KAPVuMeter(KadenzeAudioPluginAudioProcessor* inProcessor)
     mCh1Level(0),
     mProcessor(inProcessor)
 {
-    
 }
 
 KAPVuMeter::~KAPVuMeter()
 {
-    
 }
 
 void KAPVuMeter::paint(Graphics& g)
@@ -77,7 +75,7 @@ void KAPVuMeter::timerCallback()
     }
     else
     {
-        mCh0Level = kMeterSmoothingCoeff * (mCh0Level - updatedCh0Level) + updatedCh0Level;
+        mCh0Level = meterSmoothingCoeff * (mCh0Level - updatedCh0Level) + updatedCh0Level;
     }
     
     if (updatedCh1Level > mCh1Level)
@@ -86,7 +84,7 @@ void KAPVuMeter::timerCallback()
     }
     else
     {
-        mCh1Level = kMeterSmoothingCoeff * (mCh1Level - updatedCh1Level) + updatedCh1Level;
+        mCh1Level = meterSmoothingCoeff * (mCh1Level - updatedCh1Level) + updatedCh1Level;
     }
     
     mCh0Level = kap_denormalize(mCh0Level);

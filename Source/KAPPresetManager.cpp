@@ -24,7 +24,8 @@ KAPPresetManager::KAPPresetManager(AudioProcessor* inProcessor)
     const String pluginName = (String)mProcessor->getName();
     mPresetDirectory = (File::getSpecialLocation(File::userDesktopDirectory)).getFullPathName() + directorySeparator + pluginName;
     
-    if (!File(mPresetDirectory).exists()){
+    if (!File(mPresetDirectory).exists())
+    {
         File(mPresetDirectory).createDirectory();
     }
     
@@ -32,8 +33,7 @@ KAPPresetManager::KAPPresetManager(AudioProcessor* inProcessor)
 }
 
 KAPPresetManager::~KAPPresetManager()
-{
-    
+{    
 }
 
 void KAPPresetManager::getXmlForPreset(XmlElement* inElement)
@@ -45,7 +45,6 @@ void KAPPresetManager::getXmlForPreset(XmlElement* inElement)
         AudioProcessorParameterWithID* parameter = (AudioProcessorParameterWithID*)parameters.getUnchecked(i);
         inElement->setAttribute(parameter->paramID,
                                 parameter->getValue());
-        
     }
 }
 
@@ -167,8 +166,8 @@ void KAPPresetManager::storeLocalPreset()
                              false,
                              "*" + (String)PRESET_FILE_EXTENSION,
                              File::TypesOfFileToFind::findFiles); di.next();)
-                             {
-                                 File preset = di.getFile();
-                                 mLocalPresets.add(preset);
-                             }
+    {
+        File preset = di.getFile();
+        mLocalPresets.add(preset);
+    }
 }

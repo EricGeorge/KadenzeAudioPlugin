@@ -21,7 +21,6 @@ enum KAPDelayType
 class KAPDelay
 {
 public:
-    
     KAPDelay();
     ~KAPDelay();
     
@@ -39,15 +38,10 @@ public:
                  int inNumSamplesToRender);
     
 private:
-    
-    /** internal */
-    double getInterpolatedSample(float inDelayTimeInSamples);
-    
     double mSampleRate;
     double mCircularBuffer[maxBufferSize];
-//    double mFeedbackSample;
-    
     float mTimeSmoothed;
-    
     int mDelayIndex;
+    
+    double getInterpolatedSample(float inDelayTimeInSamples);
 };

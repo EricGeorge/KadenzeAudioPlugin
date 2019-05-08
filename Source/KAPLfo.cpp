@@ -19,7 +19,6 @@ KAPLfo::KAPLfo()
 
 KAPLfo::~KAPLfo()
 {
-    
 }
 
 void KAPLfo::reset()

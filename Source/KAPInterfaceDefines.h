@@ -12,23 +12,23 @@
 
 #include "JuceHeader.h"
 
-#define MAIN_PANEL_WIDTH    750
-#define MAIN_PANEL_HEIGHT   300
+const int mainPanelWidth = 750;
+const int mainPanelHeight = 300;
 
-#define TOP_PANEL_WIDTH     MAIN_PANEL_WIDTH
-#define TOP_PANEL_HEIGHT    45
+const int topPanelWidth = mainPanelWidth;
+const int topPanelHeight = 45;
 
-#define GAIN_PANEL_WIDTH    100
-#define GAIN_PANEL_HEIGHT   MAIN_PANEL_HEIGHT - TOP_PANEL_HEIGHT
+const int gainPanelWidth = 100;
+const int gainPanelHeight = mainPanelHeight - topPanelHeight;
 
-#define CENTER_PANEL_WIDTH  MAIN_PANEL_WIDTH - (GAIN_PANEL_WIDTH * 2)
-#define CENTER_PANEL_HEIGHT GAIN_PANEL_HEIGHT
+const int centerPanelWidth = mainPanelWidth - (gainPanelWidth * 2);
+const int centerPanelHeight = gainPanelHeight;
 
-#define CENTER_PANEL_MENU_BAR_WIDTH     CENTER_PANEL_WIDTH
-#define CENTER_PANEL_MENU_BAR_HEIGHT    35
+const int centerPanelMenuBarWidth = centerPanelWidth;
+const int centerPanelMenuBarHeight = 35;
 
-#define FX_PANEL_WIDTH      CENTER_PANEL_WIDTH
-#define FX_PANEL_HEIGHT     CENTER_PANEL_HEIGHT - CENTER_PANEL_MENU_BAR_HEIGHT
+const int fxPanelWidth = centerPanelWidth;
+const int fxPanelHeight = centerPanelHeight - centerPanelMenuBarHeight;
 
 const Colour KAPColour_1 = Colour(105, 105, 105);
 const Colour KAPColour_2 = Colour(0, 0, 0).withAlpha(0.0f);

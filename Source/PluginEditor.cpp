@@ -18,8 +18,8 @@ KadenzeAudioPluginAudioProcessorEditor::KadenzeAudioPluginAudioProcessorEditor (
 {
     // Make sure that before the constructor has finished, you've set the
     // editor's size to whatever you need it to be.
-    setSize (MAIN_PANEL_WIDTH,
-             MAIN_PANEL_HEIGHT);
+    setSize (mainPanelWidth,
+             mainPanelHeight);
     
     mLookAndFeel.reset(new KAPLookAndFeel);
     setLookAndFeel(mLookAndFeel.get());

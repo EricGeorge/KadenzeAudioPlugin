@@ -12,14 +12,12 @@
 #include "KAPInterfaceDefines.h"
 
 KAPPanelBase::KAPPanelBase(KadenzeAudioPluginAudioProcessor* inProcessor)
-: mProcessor(inProcessor)
+:   mProcessor(inProcessor)
 {
-    
 }
 
 KAPPanelBase::~KAPPanelBase()
 {
-    
 }
 
 void KAPPanelBase::mouseEnter(const MouseEvent& event)

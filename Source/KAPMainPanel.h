@@ -15,11 +15,9 @@
 #include "KAPGainPanel.h"
 #include "KAPCenterPanel.h"
 
-class KAPMainPanel
-:   public KAPPanelBase
+class KAPMainPanel  : public KAPPanelBase
 {
 public:
-    
     KAPMainPanel(KadenzeAudioPluginAudioProcessor* inProcessor);
     ~KAPMainPanel();
     

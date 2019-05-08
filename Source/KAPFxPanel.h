@@ -20,12 +20,10 @@ enum KAPFxPanelStyle
     kKAPFxPanelStyle_TotalNumStyles
 };
 
-class KAPFxPanel
-:   public KAPPanelBase,
-    public ComboBox::Listener
+class KAPFxPanel  : public KAPPanelBase,
+                    public ComboBox::Listener
 {
 public:
-    
     KAPFxPanel(KadenzeAudioPluginAudioProcessor* inProcessor);
     ~KAPFxPanel();
     
@@ -33,10 +31,9 @@ public:
     
     void setFxPanelStyle(KAPFxPanelStyle inStyle);
     
-    void comboBoxChanged (ComboBox* comboBoxThatHasChanged) override;
+    void comboBoxChanged(ComboBox* comboBoxThatHasChanged) override;
     
 private:
     KAPFxPanelStyle mStyle;
-    
     OwnedArray<KAPParameterSlider> mSliders;
 };

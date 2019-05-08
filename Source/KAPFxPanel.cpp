@@ -15,8 +15,8 @@
 KAPFxPanel::KAPFxPanel(KadenzeAudioPluginAudioProcessor* inProcessor)
 :   KAPPanelBase(inProcessor)
 {
-    setSize(FX_PANEL_WIDTH,
-            FX_PANEL_HEIGHT);
+    setSize(fxPanelWidth,
+            fxPanelHeight);
     
     auto& parameters = mProcessor->getParameters();
     AudioProcessorParameterWithID* delayType = (AudioProcessorParameterWithID*)parameters.getUnchecked(kParameter_DelayType);
@@ -26,7 +26,6 @@ KAPFxPanel::KAPFxPanel(KadenzeAudioPluginAudioProcessor* inProcessor)
 
 KAPFxPanel::~KAPFxPanel()
 {
-    
 }
 
 void KAPFxPanel::paint(Graphics& g)
@@ -49,7 +48,6 @@ void KAPFxPanel::paint(Graphics& g)
     
     g.setColour(KAPColour_5);
     g.setFont(font_3);
-    
     g.drawText(label, 0, 0, getWidth(), 80, Justification::centred);
     
     for (int i = 0; i < mSliders.size(); i++)

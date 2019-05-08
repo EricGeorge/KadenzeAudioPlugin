@@ -30,5 +30,4 @@ private:
     double mSampleRate;
     float mPhase;
     float mBuffer[maxBufferSize];
-    
 };

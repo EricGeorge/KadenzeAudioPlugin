@@ -13,9 +13,8 @@
 #include "JuceHeader.h"
 #include "PluginProcessor.h"
 
-class KAPVuMeter
-:   public Component,
-    public Timer
+class KAPVuMeter  : public Component,
+                    public Timer
 {
 public:
     KAPVuMeter(KadenzeAudioPluginAudioProcessor* inProcessor);

@@ -32,10 +32,7 @@ public:
     bool getIsCurrentPresetSaved();
     String getCurrentPresetName();
     
-    
 private:
-    void storeLocalPreset();
-
     bool mCurrentPresetIsSaved;
     File mCurrentlyLoadedPreset;
     Array<File> mLocalPresets;
@@ -44,4 +41,6 @@ private:
     
     AudioProcessor* mProcessor;
     XmlElement* mCurrentPresetXml;
+    
+    void storeLocalPreset();
 };

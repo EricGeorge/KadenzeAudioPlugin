@@ -12,10 +12,10 @@
 #include "KAPParameters.h"
 
 KAPCenterPanelMenuBar::KAPCenterPanelMenuBar(KadenzeAudioPluginAudioProcessor* inProcessor)
-: KAPPanelBase(inProcessor)
+:   KAPPanelBase(inProcessor)
 {
-    setSize(CENTER_PANEL_MENU_BAR_WIDTH,
-            CENTER_PANEL_MENU_BAR_HEIGHT);
+    setSize(centerPanelMenuBarWidth,
+            centerPanelMenuBarHeight);
     
     const int width = 85;
     
@@ -32,7 +32,6 @@ KAPCenterPanelMenuBar::KAPCenterPanelMenuBar(KadenzeAudioPluginAudioProcessor* i
 
 KAPCenterPanelMenuBar::~KAPCenterPanelMenuBar()
 {
-    
 }
 
 void KAPCenterPanelMenuBar::addFxTypeComboBoxListener(ComboBox::Listener* inListener)

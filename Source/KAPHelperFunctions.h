@@ -25,9 +25,7 @@ inline void paintComponentLabel(Graphics& g, Component* inComponent)
     
     g.setColour(KAPColour_3);
     g.fillRoundedRectangle(x, y, w, h, cornerSize);
-    
     g.setColour(KAPColour_1);
     g.setFont(font_1);
-    
     g.drawFittedText(label, x, y, w, h, Justification::centred, 1);
 }
